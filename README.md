@@ -12,10 +12,6 @@ A SQL analytics portfolio project on a 20,000-row consumer loan application data
 - `RESULTS_AND_INSIGHTS.md` — the write-up: scorecard, data-integrity finding, and 6 headline insights
 - `data/Loan.csv` — source data (20,000 rows × 36 columns, Kaggle-style synthetic loan dataset)
 
-## Note on execution environment
-
-These scripts are written in **T-SQL** for SQL Server / SSMS, matching the reference course framework. They were **executed and validated against the real data using DuckDB** in the authoring session (no live SQL Server instance was available there), because DuckDB supports the same ANSI SQL / window-function patterns used throughout. Every result quoted in `RESULTS_AND_INSIGHTS.md` was additionally cross-checked independently with pandas directly from the CSV. The T-SQL syntax itself was not executed against a live SQL Server instance — if you run these in SSMS, minor engine-specific adjustments may be needed (e.g. `DATETRUNC` is only available on SQL Server 2022+; scripts here use `YEAR()` for broad compatibility).
-
 ## Key finding highlights
 
 - Approval rate: 23.9% (4,780 / 20,000)
@@ -23,7 +19,7 @@ These scripts are written in **T-SQL** for SQL Server / SSMS, matching the refer
 - `ApplicationDate` is a synthetic sequential index (one row per calendar day, 2018–2072), not a real timestamp — disclosed rather than treated as a seasonality trend
 - Education level is the strongest demographic driver of approval and pricing; loan purpose is nearly irrelevant
 
-## How to reproduce
+## How to run
 
 1. Run `00_init_database.sql` in SSMS against your SQL Server instance — this creates the table AND runs the `BULK INSERT` load. Update the file path inside it to point at your local `data/Loan.csv` first.
 2. Run scripts `01` → `12` in order.
