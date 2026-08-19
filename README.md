@@ -32,8 +32,3 @@ A SQL analytics portfolio project on a 20,000-row consumer loan application data
 1. Run `00_init_database.sql` in SSMS against your SQL Server instance — this creates the table AND runs the `BULK INSERT` load. Update the file path inside it to point at your local `data/Loan.csv` first.
 2. Run scripts `01` → `12` in order.
 3. Connect Power BI / Tableau to `gold.report_loan_applicants` for visualization.
-
-## Troubleshooting by Claude
-
-**"String '0' was not recognized as a valid Boolean" during import.**
-This happens if you use SSMS's "Import Flat File" wizard and let it auto-create the table — it infers `bit` for the 0/1 flag columns (`BankruptcyHistory`, `PreviousLoanDefaults`, `LoanApproved`), and its .NET import engine only accepts the literal text "True"/"False" for `bit`, not "0"/"1" — a known quirk of that wizard, not a data problem. Fix: use `00_init_database.sql`'s `BULK INSERT` instead (it targets a table with `TINYINT` columns already defined, which loads "0"/"1" without issue). If you want to keep using the wizard, manually change those three columns from `bit` to `tinyint` on its "Modify Columns" screen before importing. If a partial/failed auto-created table already exists, drop it first to avoid duplicate data.
