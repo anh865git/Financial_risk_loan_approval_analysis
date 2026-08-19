@@ -1,3 +1,11 @@
+
+# About Me & This Project
+
+With a background in **finance**, I am passionate about bridging the gap between financial analysis and data engineering to drive smarter, data-backed decisions. This repository reflects my hands-on journey into structured data analysis.
+
+A special shoutout to [@DataWithBaraa](https://github.com/DataWithBaraa) for providing an incredibly inspiring and helpful roadmap for SQL beginners, which laid a strong foundation for this workflow.
+
+Additionally, development for this project was assisted by **Copilot** in refining T-SQL syntax, query optimization, and presentation clarity.
 # Loan Portfolio — SQL EDA & Advanced Analytics
 
 A SQL analytics portfolio project on a 20,000-row consumer loan application dataset, following a 6-step EDA framework and an advanced-analytics roadmap (change-over-time, cumulative, performance, part-to-whole, and segmentation analysis), consolidated into a single reporting view.
